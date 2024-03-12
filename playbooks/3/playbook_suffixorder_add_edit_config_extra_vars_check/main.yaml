@@ -1,3 +1,4 @@
-- hosts: "*"
+- hosts: localhost
+  connection: local
   roles:
     - { role: roles/edit_config_extra_vars_check }
