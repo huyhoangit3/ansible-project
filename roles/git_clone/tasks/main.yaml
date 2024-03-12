@@ -1,6 +1,6 @@
 ---
 - name: Clone git project
-  git:
+  ansible.builtin.git:
     repo: https://github.com/huyhoangit3/ansible-project.git
     dest: /home/hoang/repos
     clone: yes
