@@ -3,7 +3,8 @@
   git:
     repo: https://github.com/huyhoangit3/ansible-project.git
     dest: /home/hoang/
-    update: yes
+    clone: true
+    update: true
   register: result_git_clone
 
 - name: Print prev commit ID
