@@ -23,3 +23,7 @@
     ansible.builtin.fail: msg="stats_secondary_dns is not defined"
     when: stats_secondary_dns is undefined
     ignore_errors: true
+
+  - name: Set flag
+    set_fact: flag = failed
+    when: "'FAILED' in command_result.stderr"
