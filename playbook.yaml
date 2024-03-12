@@ -1,0 +1,26 @@
+- hosts: "kmasters, kworkers"
+  become: true
+  roles:
+    - create-k8s-user
+
+- hosts: "kmasters, kworkers"
+  become: true
+  remote_user: ubuntu
+  become_method: sudo
+  become_user: root
+  gather_facts: yes
+  connection: ssh
+  roles:
+    - install-k8s
+
+- hosts: "kmasters"
+  become: true
+  roles:
+    - init-cluster
+
+- hosts: "kworkers"
+  become: true
+  roles:
+    - join-workers
+
+
