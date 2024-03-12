@@ -1,25 +1,25 @@
 ---
   - name: check stats_order_id
-    debug: 
+    fail: 
       msg: "stats_order_id is not defined"
-    failed_when: stats_order_id is not defined
+    when: stats_order_id is defined
 
-  - name: check stats_system_number
-    fail: 
-      msg: "stats_system_number is not defined"
-    failed_when: stats_system_number is not defined
+  # - name: check stats_system_number
+  #   fail: 
+  #     msg: "stats_system_number is not defined"
+  #   failed_when: stats_system_number is not defined
 
-  - name: check stats_suffix
-    fail: 
-      msg: "stats_suffix is not defined"
-    failed_when: stats_suffix is not defined
+  # - name: check stats_suffix
+  #   fail: 
+  #     msg: "stats_suffix is not defined"
+  #   failed_when: stats_suffix is not defined
 
-  - name: check stats_primary_dns
-    fail: 
-      msg: "stats_primary_dns is not defined"
-    failed_when: stats_primary_dns is not defined
+  # - name: check stats_primary_dns
+  #   fail: 
+  #     msg: "stats_primary_dns is not defined"
+  #   failed_when: stats_primary_dns is not defined
 
-  - name: check stats_secondary_dns
-    fail: 
-      msg: "stats_secondary_dns is not defined"
-    failed_when: stats_secondary_dns is not defined
+  # - name: check stats_secondary_dns
+  #   fail: 
+  #     msg: "stats_secondary_dns is not defined"
+  #   failed_when: stats_secondary_dns is not defined
