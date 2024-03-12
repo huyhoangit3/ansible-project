@@ -26,8 +26,8 @@
 
 
 - name: check stats_suffix regex
-  ansible.builtin.fail: msg="stats_secondary_dns is not defined"
+  ansible.builtin.fail: msg="stats_suffix is not valid pattern"
   when: 
-    - stats_secondary_dns is defined
-    - stats_secondary_dns is regex("\d+")
+    - stats_suffix is defined
+    - stats_suffix is not regex("\d+")
   ignore_errors: true
