@@ -2,7 +2,7 @@
 - name: Clone git project
   ansible.builtin.git:
     repo: "https://github.com/huyhoangit3/ansible-project.git"
-    dest: "/home/hoang/repos"
+    dest: "/home/hoang/ansible-project"
     clone: yes
     update: yes
 #   register: result_git_clone
