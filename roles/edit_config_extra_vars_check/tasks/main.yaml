@@ -2,7 +2,7 @@
   - name: check stats_order_id
     debug: 
       msg: "stats_order_id is not defined"
-    when: stats_order_id is not defined
+    failed_when: stats_order_id is not defined
 
   # - name: check stats_system_number
   #   fail: 
