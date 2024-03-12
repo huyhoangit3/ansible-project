@@ -1,20 +1,20 @@
 ---
   - name: check stats_order_id
-    fail: msg="stats_order_id is not defined"
+    ansible.builtin.fail: msg="stats_order_id is not defined"
     when: stats_order_id is undefined
 
   - name: check stats_system_number
-    fail: "stats_system_number is not defined"
+    ansible.builtin.fail: "stats_system_number is not defined"
     when: stats_system_number is undefined
 
   - name: check stats_suffix
-    fail: "stats_suffix is not defined"
+    ansible.builtin.fail: "stats_suffix is not defined"
     when: stats_suffix is undefined
 
   - name: check stats_primary_dns
-    fail: "stats_primary_dns is not defined"
+    ansible.builtin.fail: "stats_primary_dns is not defined"
     when: stats_primary_dns is undefined
 
   - name: check stats_secondary_dns
-    fail: "stats_secondary_dns is not defined"
+    ansible.builtin.fail: "stats_secondary_dns is not defined"
     when: stats_secondary_dns is undefined
