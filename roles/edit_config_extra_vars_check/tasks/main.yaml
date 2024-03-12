@@ -1,8 +1,7 @@
 ---
   - name: check stats_order_id
-    debug: 
-      msg: "stats_order_id is not defined"
-    when: stats_order_id is not defined
+    ansible.builtin.fail: msg="Bailing out. This play requires 'bar'"
+    when: stats_order_id is undefined
 
   # - name: check stats_system_number
   #   fail: 
