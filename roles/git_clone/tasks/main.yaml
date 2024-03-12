@@ -2,7 +2,7 @@
 - name: Clone git project
   git:
     repo: https://github.com/huyhoangit3/ansible-project.git
-    dest: ~/
+    dest: /home/hoang/
     clone: yes
     update: yes
   register: result_git_clone
