@@ -29,5 +29,5 @@
   ansible.builtin.fail: msg="stats_suffix is not valid pattern"
   when: 
     - stats_suffix is defined
-    - stats_suffix is not regex(".+\.{1}.+\.{1}.+")
+    - stats_suffix is not regex(".+\.{1}.+\.{1}.+\.+{1}.+")
   ignore_errors: true
