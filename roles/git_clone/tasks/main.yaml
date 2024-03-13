@@ -12,7 +12,12 @@
     dest: "/home/vagrant/repo"
     clone: yes
     update: yes
+    version: "{{ '{{git_clone_hash}}' if git_clone_hash is defined else 'master' }}"
   register: result_git_clone
+
+- name: Checkout specific commit
+  ansible.builtin.shell: "git checkout {{git_clone_hash}}"
+  when: git_clone_hash is defined
 
 - set_fact:
     git_clone_before_hash: "{{result_git_clone.before}}"
