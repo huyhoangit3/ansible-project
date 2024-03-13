@@ -18,6 +18,9 @@
     name: "{{radiusd_restart_check_service}}"
   register: service_status
 
+- debug:
+    var: service_status
+
 - name: check stats_secondary_dns
   ansible.builtin.fail: msg="the service is not running"
   when: service_status.status.FreezerState != "running"
