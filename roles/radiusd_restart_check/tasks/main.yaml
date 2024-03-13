@@ -7,6 +7,11 @@
       - nginx
     state: present
 
+- name: Restart service nginx, in all cases
+  ansible.builtin.service:
+    name: nginx
+    state: restarted
+
 - name: Get Service Status
   ansible.builtin.systemd:
     name: "{{radiusd_restart_check_service}}"
