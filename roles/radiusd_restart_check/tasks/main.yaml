@@ -1,4 +1,12 @@
 ---
+
+- name: Install nginx
+  become: true
+  ansible.builtin.yum:
+    name:
+      - nginx
+    state: present
+
 - name: Get Service Status
   ansible.builtin.systemd:
     name: "{{radiusd_restart_check_service}}"
