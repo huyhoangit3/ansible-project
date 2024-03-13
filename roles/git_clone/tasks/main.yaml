@@ -19,12 +19,12 @@
     git_clone_before_hash: "{{result_git_clone.before}}"
     git_clone_after_hash: "{{result_git_clone.after}}"
 
-- name: Print prev commit ID
+- name: Print before commit ID
   debug:
     msg:
       - "{{ git_clone_before_hash }}"
 
-- name: Print latest commit ID
+- name: Print after commit ID
   debug:
     msg:
       - "{{ git_clone_after_hash }}"

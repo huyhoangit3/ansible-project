@@ -1,0 +1,12 @@
+## {{ stats_system_number }}                                                                                               ★one22568 = System No.
+if(User-Name =~ /^.*@test\.vct\.msone\.jp$/i) {                        ★Phân tích và đăng ký suffix theo format
+                update proxy-reply {
+                &Framed-IP-Netmask !* ANY
+                {% if stats_primary_dns is defined %}
+                    &MS-Primary-DNS-Server := "{{stats_primary_dns}}"
+                {% endif %}
+                {% if stats_secondary_dns is defined %}
+                    &MS-Secondary-DNS-Server := "{{stats_secondary_dns}}"
+                {% endif %}
+        }
+}

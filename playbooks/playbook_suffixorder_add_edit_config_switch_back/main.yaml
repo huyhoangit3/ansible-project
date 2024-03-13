@@ -1,5 +1,4 @@
 - hosts: ec2_test
   connection: ssh
   roles:
-    - { role: roles/edit_config_extra_vars_check }
-    # - { role: roles/git_clone }
+    - { role: roles/radiusd_restart_check }
