@@ -13,15 +13,11 @@
     name: nginx
     state: stopped
 
-- name: Get Service Status
-  ansible.builtin.systemd:
-    name: "{{radiusd_restart_check_service}}"
-  register: service_status
+- name: get service facts
+  ansible.builtin.service_facts:
+  register: services_state
 
-- debug:
-    var: service_status
-
-- name: check stats_secondary_dns
-  ansible.builtin.fail: msg="the service is not running"
-  when: service_status.status.FreezerState != "running"
-  ignore_errors: true
+- name: check if the nginx service is running
+  ansible.builtin.fail:
+    msg: the nginx service is not running
+  when: services_state.services["nginx.service"] is not defined
