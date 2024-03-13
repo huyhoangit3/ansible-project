@@ -8,6 +8,7 @@
     state: present
 
 - name: Restart service nginx, in all cases
+  become: true
   ansible.builtin.service:
     name: nginx
     state: restarted
