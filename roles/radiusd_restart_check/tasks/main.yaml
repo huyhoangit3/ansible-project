@@ -17,8 +17,9 @@
   service_facts:
   register: services_state
 
-- debug:
-    msg: services_state
+- name: Debug
+  debug:
+    var: services_state
 
 - name: check if the nginx service is running
   ansible.builtin.fail:
