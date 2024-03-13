@@ -1,0 +1,47 @@
+---
+
+- name: check stats_order_id
+  ansible.builtin.fail: msg="stats_order_id is not defined"
+  when: stats_order_id is undefined
+  ignore_errors: true
+
+- name: check stats_system_number
+  ansible.builtin.fail: msg="stats_system_number is not defined"
+  when: stats_system_number is undefined
+  ignore_errors: true
+
+- name: check stats_suffix
+  ansible.builtin.fail: msg="stats_suffix is not defined"
+  when: stats_suffix is undefined
+  ignore_errors: true
+
+- name: check stats_primary_dns
+  ansible.builtin.fail: msg="stats_primary_dns is not defined"
+  when: stats_primary_dns is undefined
+  ignore_errors: true
+
+- name: check stats_secondary_dns
+  ansible.builtin.fail: msg="stats_secondary_dns is not defined"
+  when: stats_secondary_dns is undefined
+  ignore_errors: true
+
+- name: check stats_suffix regex
+  ansible.builtin.fail: msg="stats_suffix is not valid pattern"
+  when: 
+    - stats_suffix is defined
+    - stats_suffix is not regex(".+\.{1}.+\.{1}.+\.{1}.+")
+  ignore_errors: true
+
+- name: check stats_primary_dns regex
+  ansible.builtin.fail: msg="stats_primary_dns is not valid pattern"
+  when: 
+    - stats_primary_dns is defined
+    - stats_primary_dns is regex("^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$")
+  ignore_errors: true
+
+- name: check stats_secondary_dns regex
+  ansible.builtin.fail: msg="stats_secondary_dns is not valid pattern"
+  when: 
+    - stats_secondary_dns is defined
+    - stats_secondary_dns is regex("^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$")
+  ignore_errors: true
