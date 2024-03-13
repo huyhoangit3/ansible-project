@@ -15,8 +15,8 @@
   register: result_git_clone
 
 - set_fact:
-  git_clone_before_hash: "{{result_git_clone.before}}"
-  git_clone_after_hash: "{{result_git_clone.after}}"
+    git_clone_before_hash: "{{result_git_clone.before}}"
+    git_clone_after_hash: "{{result_git_clone.after}}"
 
 - name: Print prev commit ID
   debug:
