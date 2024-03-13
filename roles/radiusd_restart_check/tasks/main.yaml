@@ -14,7 +14,7 @@
     state: restarted
 
 - name: get service facts
-  ansible.builtin.service_facts:
+  service_facts:
   register: services_state
 
 - debug:
