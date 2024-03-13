@@ -6,5 +6,5 @@
 
 - name: check stats_secondary_dns
   ansible.builtin.fail: msg="the service is not running"
-  when: {{service_status.status.ActiveState}} != "running"
+  when: service_status.status.ActiveState != "running"
   ignore_errors: true
