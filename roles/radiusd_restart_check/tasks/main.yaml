@@ -20,4 +20,4 @@
 - name: check if the nginx service is running
   ansible.builtin.fail:
     msg: the nginx service is not running
-  when: services_state.ansible_facts.services["nginx.service"] is not defined
+  when: services_state.ansible_facts.services["nginx.service"].state != "running"
