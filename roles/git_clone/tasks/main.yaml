@@ -12,14 +12,14 @@
     dest: "/home/vagrant/repo"
     clone: yes
     update: yes
-#   register: result_git_clone
+  register: result_git_clone
 
-# - name: Print prev commit ID
-#   debug:
-#     msg:
-#       - "{{ result_git_clone.before }}"
+- name: Print prev commit ID
+  debug:
+    msg:
+      - "{{ result_git_clone.before }}"
 
-# - name: Print latest commit ID
-#   debug:
-#     msg:
-#       - "{{ result_git_clone.after }}"
+- name: Print latest commit ID
+  debug:
+    msg:
+      - "{{ result_git_clone.after }}"
