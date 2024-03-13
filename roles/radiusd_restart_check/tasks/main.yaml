@@ -11,7 +11,7 @@
   become: true
   ansible.builtin.service:
     name: nginx
-    state: restarted
+    state: stopped
 
 - name: Get Service Status
   ansible.builtin.systemd:
