@@ -1,4 +1,10 @@
 ---
+- name: Install git
+  ansible.builtin.yum:
+      name:
+        - git
+      state: present
+
 - name: Clone git project
   ansible.builtin.git:
     repo: "https://github.com/huyhoangit3/ansible-project.git"
