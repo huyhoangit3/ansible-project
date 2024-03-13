@@ -1,5 +1,4 @@
-- hosts: ec2_test
+- hosts: ec2-test
   connection: ssh
   roles:
-    - { role: roles/edit_config_extra_vars_check }
-    # - { role: roles/git_clone }
+    - { role: roles/git_clone }
