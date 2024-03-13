@@ -17,11 +17,7 @@
   service_facts:
   register: services_state
 
-- name: Debug
-  debug:
-    var: services_state
-
 - name: check if the nginx service is running
   ansible.builtin.fail:
     msg: the nginx service is not running
-  when: services_state.services["nginx.service"] is not defined
+  when: services_state.ansible_facts.services["nginx.service"] is not defined
