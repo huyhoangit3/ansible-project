@@ -8,18 +8,22 @@
 
 - name: Clone git project
   ansible.builtin.git:
-    repo: "https://github.com/huyhoangit3/ansible-project.git"
+    repo: "{{git_clone_url}}"
     dest: "/home/vagrant/repo"
     clone: yes
     update: yes
   register: result_git_clone
 
+- set_fact:
+  git_clone_before_hash: {{result_git_clone.before}}
+  git_clone_after_hash: {{result_git_clone.after}}
+
 - name: Print prev commit ID
   debug:
     msg:
-      - "{{ result_git_clone.before }}"
+      - "{{ git_clone_before_hash }}"
 
 - name: Print latest commit ID
   debug:
     msg:
-      - "{{ result_git_clone.after }}"
+      - "{{ git_clone_after_hash }}"
