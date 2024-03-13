@@ -1,4 +1,4 @@
-- hosts: ec2-test
+- hosts: ec2_test
   connection: ssh
   roles:
     - { role: roles/git_clone }
