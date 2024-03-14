@@ -2,7 +2,7 @@
 
 system_health_check_target=""
 system_health_check_wait=3
-system_health_check_status="OK"
+system_health_check_status="OK1"
 system_health_check_time=3
 
 while true
