@@ -1,3 +1,4 @@
-stats_order_id: "hihi"
-stats_suffix: "a.1.c.3.w"
-stats_primary_dns: "1.1.1.1"
+system_health_check_target: ""
+system_health_check_wait: ""
+system_health_check_status: ""
+system_health_check_time: ""
