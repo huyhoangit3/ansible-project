@@ -1,9 +1,9 @@
 #! /bin/bash
 
-system_health_check_target=""
-system_health_check_wait=3
-system_health_check_status="OK1"
-system_health_check_time=3
+system_health_check_target="$1"
+system_health_check_wait="$2"
+system_health_check_status="$3"
+system_health_check_time="$4"
 
 while true
 do
