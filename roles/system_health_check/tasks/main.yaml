@@ -8,4 +8,4 @@
 
 - name: execute the script
   become: true
-  command: "sh files/task.sh {{system_health_check_target}} {{system_health_check_wait}} {{system_health_check_status}} {{system_health_check_time}}"
+  script: files/task.sh {{system_health_check_target}} {{system_health_check_wait}} {{system_health_check_status}} {{system_health_check_time}}
