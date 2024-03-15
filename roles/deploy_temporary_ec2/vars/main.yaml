@@ -1,3 +1,2 @@
-stats_order_id: "hihi"
-stats_suffix: "a.1.c.3.w"
-stats_primary_dns: "1.1.1.1"
+deploy_temporary_ec2_target_asg: "" # ASG name
+deploy_temporary_ec2_wait_limit: 3

@@ -6,9 +6,6 @@
       - jq
     state: present
 
-#- name: Transfer the script
-#  copy: src=files/task.sh dest=/home/vagrant mode=0777
-
 - name: Execute the script
 #  become: true
   script: files/task.sh {{system_health_check_target}} {{system_health_check_wait}} {{system_health_check_status}} {{system_health_check_time}}
