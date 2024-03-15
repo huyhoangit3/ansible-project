@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 system_health_check_target="$1"
 system_health_check_wait="$2"
