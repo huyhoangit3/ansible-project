@@ -11,7 +11,7 @@ do
   current_alarm_state=$(aws cloudwatch describe-alarms  --alarm-names ${system_health_check_target} | jq .MetricAlarms[0].StateValue)
 #  current_alarm_state=$(echo 'OK')
 
-  if [ "$current_alarm_state" = "${system_health_check_status}" ]
+  if [ "$current_alarm_state" == "${system_health_check_status}" ];
   then
     echo 'SUCCESS'
     exit 0
@@ -20,7 +20,7 @@ do
   system_health_check_time=$((system_health_check_time - 1))
   echo "${system_health_check_time}"
 
-  if [ $system_health_check_time -eq 0 ]
+  if [ $system_health_check_time -eq 0 ];
   then
     echo 'ERROR'
     exit 1
