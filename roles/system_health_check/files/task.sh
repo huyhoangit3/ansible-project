@@ -9,10 +9,10 @@ while true
 do
   sleep $system_health_check_wait
   current_alarm_state=$(aws cloudwatch describe-alarms  --alarm-names ${system_health_check_target} | jq .MetricAlarms[0].StateValue)
-  current_alarm_state=$(echo -n $current_alarm_state)
-  echo $current_alarm_state
+  current_alarm_state1=${current_alarm_state%?}
+  echo $current_alarm_state1
 
-  if [[ "OK" == "$system_health_check_status" ]];
+  if [[ "$current_alarm_state1" == "$system_health_check_status" ]];
   then
     echo 'SUCCESS'
     exit 0
