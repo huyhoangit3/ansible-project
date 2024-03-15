@@ -14,7 +14,7 @@ do
   echo $current_alarm_state
 
 #  if [[ "$current_alarm_state" == "$system_health_check_status" ]];
-  if [[ "$current_alarm_state" == "OK" ]];
+  if [[ "$current_alarm_state" == "OK\n" ]];
   then
     echo 'SUCCESS'
     exit 0
