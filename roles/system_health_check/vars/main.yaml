@@ -1,4 +1,4 @@
 system_health_check_target: "TargetTracking-radius-dev-osaka-ec2-autoscaling-gr-3a-AlarmHigh-429cb408-a941-4793-a6aa-ba972aa5f484" # alarm name
 system_health_check_wait: 3
-system_health_check_status: "OK"  # desire state
+system_health_check_status: "IN_ALARM"  # desire state
 system_health_check_time: 3
