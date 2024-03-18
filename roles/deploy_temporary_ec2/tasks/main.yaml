@@ -44,12 +44,12 @@
   amazon.aws.ec2_instance:
     name: "temp_rproxy_{{current_time}}"
     key_name: "radius-dev-osaka-ec2-login-key"
-    vpc_subnet_id: subnet-5ca1ab1e
-    instance_type: c5.large
+    vpc_subnet_id: subnet-1acb1657
+    instance_type: t2.micro
     security_group: default
     network:
       assign_public_ip: true
-    image_id: ami-123456
+    image_id: "{{deploy_temporary_ec2_before_ami_id}}"
     tags:
       Environment: Testing
 
