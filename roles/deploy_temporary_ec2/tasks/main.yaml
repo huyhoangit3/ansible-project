@@ -7,4 +7,4 @@
 
 - name: Print
   debug:
-    msg: {{ result }}
+    msg: "{{ result }}"
