@@ -5,8 +5,6 @@
     name: flets-rproxy-dev-osaka-ec2-autoscaling-gr-3a
   register: result
 
-- set_fact: my_deploy_dir="{{ result.stdout }}"
-
 - name: Print
   debug:
-    msg: "{{ my_deploy_dir }}"
+    var: "{{ result }}"
