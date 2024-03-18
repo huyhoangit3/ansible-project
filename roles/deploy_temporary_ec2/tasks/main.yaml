@@ -1,7 +1,7 @@
 ---
 - name: Find a group with matching name/prefix
   amazon.aws.autoscaling_group_info:
-    name: {{deploy_temporary_ec2_target_asg}}
+    name: "{{deploy_temporary_ec2_target_asg}}"
   register: result
 
 - name: Setting variables
