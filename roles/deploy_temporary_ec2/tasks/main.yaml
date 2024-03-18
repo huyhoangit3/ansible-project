@@ -1,7 +1,8 @@
 ---
 - name: Find a group with matching name/prefix
   amazon.aws.autoscaling_group_info:
-    name: {{deploy_temporary_ec2_target_asg}}
+#    name: {{deploy_temporary_ec2_target_asg}}
+    name: flets-rproxy-dev-osaka-ec2-autoscaling-gr-3a
   register: result
 
 - name: Print
