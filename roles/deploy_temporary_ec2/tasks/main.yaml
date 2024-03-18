@@ -7,4 +7,4 @@
 
 - name: Print
   debug:
-    msg: "{{ result.results.msg[0].auto_scaling_group_arn }}"
+    msg: "{{ result.results[0].auto_scaling_group_arn }}"
