@@ -7,4 +7,4 @@
 
 - name: Print
   debug:
-    msg: "{{ result.instances[0].instance_id }}"
+    msg: "{{ result.stdout }}"
