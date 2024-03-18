@@ -1,17 +1,17 @@
 ---
-- name: Find a group with matching name/prefix
+- name: Get ASG info by name
   amazon.aws.autoscaling_group_info:
     name: "{{deploy_temporary_ec2_target_asg}}"
   register: asg_info
 
-- name: Setting variables
+- name: Setting ec2_instance_id, asg_template_name, asg_template_id variables
   ansible.builtin.set_fact:
     ec2_instance_id: "{{ asg_info.results[0].instances[0].instance_id }}"
     asg_template_name: "{{ asg_info.results[0].instances[0].launch_template.launch_template_name }}"
     asg_template_id: "{{ asg_info.results[0].instances[0].launch_template.launch_template_id }}"
     cacheable: false
 
-- name: Gather information about a particular instance using ID
+- name: Get EC2 instance info by instance id
   amazon.aws.ec2_instance_info:
     instance_ids:
       - "{{ ec2_instance_id }}"
@@ -25,12 +25,12 @@
 #  debug:
 #    msg: "{{ ec2_info.instances[0].image_id }}"
 
-- name: Setting variables 1
+- name: Setting EC2 ami_id (image_id) variable
   ansible.builtin.set_fact:
-    image_id: "{{ ec2_info.instances[0].image_id }}"
+    deploy_temporary_ec2_before_ami_id: "{{ ec2_info.instances[0].image_id }}"
     cacheable: false
 
-- name: Current datetime
+- name: Set current datetime with specified format (YYYYMMDDhhmm)
   ansible.builtin.set_fact:
     current_time: "{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}{{ ansible_date_time.hour }}{{ ansible_date_time.minute }}"
     cacheable: false
@@ -40,15 +40,18 @@
     msg: "{{ current_time }}"
 
 
-#- name: start an instance with a public IP address
-#  amazon.aws.ec2_instance:
-#    name: "temp_rproxy_{{current_time}}"
-#    key_name: "prod-ssh-key"
-#    vpc_subnet_id: subnet-5ca1ab1e
-#    instance_type: c5.large
-#    security_group: default
-#    network:
-#      assign_public_ip: true
-#    image_id: ami-123456
-#    tags:
-#      Environment: Testing
+- name: start an instance with a public IP address
+  amazon.aws.ec2_instance:
+    name: "temp_rproxy_{{current_time}}"
+    key_name: "radius-dev-osaka-ec2-login-key"
+    vpc_subnet_id: subnet-5ca1ab1e
+    instance_type: c5.large
+    security_group: default
+    network:
+      assign_public_ip: true
+    image_id: ami-123456
+    tags:
+      Environment: Testing
+
+- name: Verify newly created EC2 instance
+  ansible.builtin.shell: ssh -i <key_name> -o ConnectTimeout={{deploy_temporary_ec2_wait_limit}} <username>@<host>
