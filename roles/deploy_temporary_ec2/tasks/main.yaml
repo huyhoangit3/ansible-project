@@ -1,10 +1,27 @@
 ---
 - name: Find a group with matching name/prefix
   amazon.aws.autoscaling_group_info:
-#    name: {{deploy_temporary_ec2_target_asg}}
-    name: flets-rproxy-dev-osaka-ec2-autoscaling-gr-3a
+    name: {{deploy_temporary_ec2_target_asg}}
   register: result
 
-- name: Print
+- name: Setting variables
+  ansible.builtin.set_fact:
+    ec2_instance_id: "{{ result.results[0].instances[0].instance_id }}"
+    asg_template_name: "{{ result.results[0].instances[0].launch_template.launch_template_name }}"
+    asg_template_id: "{{ result.results[0].instances[0].launch_template.launch_template_id }}"
+    ami_id: "{{ local_var * 2 }}"
+    cacheable: false
+
+- name: Gather information about a particular instance using ID
+  amazon.aws.ec2_instance_info:
+    instance_ids:
+      - {{ ec2_instance_id }}
+  register: ec2_info
+
+#- name: Print 1
+#  debug:
+#    msg: "{{ result.results[0].auto_scaling_group_arn }}"
+
+- name: Print 2
   debug:
-    msg: "{{ result.results[0].auto_scaling_group_arn }}"
+    msg: "{{ ec2_info }}"
