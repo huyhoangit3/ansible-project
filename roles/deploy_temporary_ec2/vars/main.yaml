@@ -1,2 +1,2 @@
-deploy_temporary_ec2_target_asg: "" # ASG name
+deploy_temporary_ec2_target_asg: "flets-rproxy-dev-osaka-ec2-autoscaling-gr-3a" # ASG name
 deploy_temporary_ec2_wait_limit: 3

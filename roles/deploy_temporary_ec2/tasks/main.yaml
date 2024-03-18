@@ -1,13 +1,9 @@
 ---
-- name: start an instance with a public IP address
-  amazon.aws.ec2_instance:
-    name: "public-compute-instance"
-    key_name: "prod-ssh-key"
-    vpc_subnet_id: subnet-5ca1ab1e
-    instance_type: c5.large
-    security_group: default
-    network:
-      assign_public_ip: true
-    image_id: ami-123456
-    tags:
-      Environment: Testing
+- name: Find a group with matching name/prefix
+  amazon.aws.autoscaling_group_info:
+    name: {{deploy_temporary_ec2_target_asg}}
+  register: result
+
+- name: Print
+  debug:
+    msg: {{result}}
