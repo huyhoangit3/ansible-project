@@ -35,23 +35,23 @@
     current_time: "{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}{{ ansible_date_time.hour }}{{ ansible_date_time.minute }}"
     cacheable: false
 
-- name: Print current datetime
-  debug:
-    msg: "{{ current_time }}"
+#- name: Print current datetime
+#  debug:
+#    msg: "{{ current_time }}"
 
 
-#- name: start an instance with a public IP address
-#  amazon.aws.ec2_instance:
-#    name: "temp_rproxy_{{current_time}}"
-#    key_name: "radius-dev-osaka-ec2-login-key"
-#    vpc_subnet_id: subnet-1acb1657
-#    instance_type: t2.micro
-#    security_group: default
-#    network:
-#      assign_public_ip: true
-#    image_id: "{{deploy_temporary_ec2_before_ami_id}}"
-#    tags:
-#      Environment: Testing
+- name: start an instance with a public IP address
+  amazon.aws.ec2_instance:
+    name: "temp_rproxy_{{current_time}}"
+    key_name: "radius-dev-osaka-ec2-login-key"
+    vpc_subnet_id: subnet-1acb1657
+    instance_type: t2.micro
+    security_group: default
+    network:
+      assign_public_ip: true
+    image_id: "{{deploy_temporary_ec2_before_ami_id}}"
+    tags:
+      Environment: Testing
 
-#- name: Verify newly created EC2 instance
-#  ansible.builtin.shell: ssh -i <key_name> -o ConnectTimeout={{deploy_temporary_ec2_wait_limit}} <username>@<host>
+- name: Verify newly created EC2 instance
+  ansible.builtin.shell: ssh -i <key_name> -o ConnectTimeout={{deploy_temporary_ec2_wait_limit}} <username>@<host>
