@@ -1,0 +1,19 @@
+---
+image: ruby:2.7
+
+stages:
+  - static-analysis
+
+before_script:
+  - apt update && apt install -y --no-install-recommends python3-pip
+  - pip3 install ansible pre-commit
+  - pre-commit --version
+  - pre-commit install
+
+static-analysis:
+  stage: static-analysis
+  script:
+    - pre-commit run --all-files
+  only:
+    - dev
+    - main
